@@ -1,0 +1,7 @@
+environment:
+# Databricks details
+  databricks:
+# List of PyPi libraries
+    pypiLibraries:
+    - package: azureml-core
+      repo: ''
