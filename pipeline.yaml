@@ -11,6 +11,12 @@ pipeline:
             name: "MyDatabrickStep"
             run_name: "DatabricksRun"
             # notebook_path: "/Users/li.yu@databricks.com/test"
+            arguments:
+             -'--param'
+               -parameter:Param1
+               parameters:
+                   Param1:
+                       source: PipelineParam1
             python_script_path: "dbfs:/tmp/jumpstart/train.py"
             spark_version: "7.6.x-cpu-ml-scala2.12"
             num_workers: 1
