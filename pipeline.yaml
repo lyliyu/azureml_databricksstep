@@ -1,0 +1,19 @@
+pipeline:
+    name: SamplePipelineFromYaml
+    parameters:
+        PipelineParam1:
+            type: int
+            default: 3
+    default_compute: fedexamlcompute2
+    steps:
+        Step1:
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            # notebook_path: "/Users/li.yu@databricks.com/test"
+            python_script_path: "dbfs:/tmp/jumpstart/train.py"
+            spark_version: "7.6.x-cpu-ml-scala2.12"
+            num_workers: 1
+            node_type: "Standard_DS3_v2"
+            allow_reuse: true
+            runconfig: "/Users/liyu/projects/gitactions/run_config.yaml"
