@@ -1,0 +1,46 @@
+pipeline:
+    description: SamplePipelineFromYaml
+    # parameters:
+    #     PenaltyParameter:
+    #         type: float
+    #         default: 3.0
+    default_compute: fedexamlcompute3
+    steps:
+        Step1:
+            runconfig: "../pipeline/run_config.yaml"
+            python_script_path: "dbfs:/tmp/jumpstart/hello3.py"  
+            # python_script_params: ["--penalty", "2", "--kernel", "rbf"]
+            python_script_params: ["--input_params_file", "/dbfs/tmp/jumpstart/input_params"]
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            # notebook_path: "/Users/li.yu@databricks.com/test"
+             
+            
+            # python_script_params: ["--penalty", "2.0", "--kernel", "rbf"]
+            # arguments:
+            #    parameters:
+            #        penalty:
+            #            source: PenaltyParameter
+            existing_cluster_id: "0310-192433-togae950"
+            allow_reuse: false
+            
+            # parameters:
+            #     penalty:
+            #         source: PenaltyParameter
+
+
+# arguments:
+# - '--param'
+# - parameter:Param1
+# parameters:
+#     Param1:
+#         source: PenaltyParameter
+    
+# parameters: PipelineParamTimeout: type:int default:600
+# ​
+    
+# arguments: -"--progress_update_timeout" - parameter:timeout_parameter
+# ​
+    
+# parameters: timeout_parameter: source:PipelineParamTimeout

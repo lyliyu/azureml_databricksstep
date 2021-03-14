@@ -12,7 +12,7 @@ pipeline:
             run_name: "DatabricksRun"
             # notebook_path: "/Users/li.yu@databricks.com/test"
             python_script_path: "dbfs:/tmp/jumpstart/train.py"    
-            python_script_params: ["--penalty", "2.0", "--kernel", "rbf"]
+            # python_script_params: ["--penalty", "2.0", "--kernel", "rbf"]
             # arguments:
             #    parameters:
             #        penalty:
