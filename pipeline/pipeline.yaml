@@ -1,9 +1,9 @@
 pipeline:
-    name: SamplePipelineFromYaml
+    description: SamplePipelineFromYaml
     parameters:
-        PipelineParam1:
-            type: int
-            default: 3
+        PenaltyParameter:
+            type: float
+            default: 3.0
     default_compute: fedexamlcompute3
     steps:
         Step1:
@@ -11,9 +11,19 @@ pipeline:
             name: "MyDatabrickStep"
             run_name: "DatabricksRun"
             # notebook_path: "/Users/li.yu@databricks.com/test"
-            python_script_path: "dbfs:/tmp/jumpstart/hello2.py"
+            python_script_path: "dbfs:/tmp/jumpstart/train.py"    
+            # python_script_params: ["--penalty", "2.0", "--kernel", "rbf"]
+            # arguments:
+            #    parameters:
+            #        penalty:
+            #            source: PenaltyParameter
             spark_version: "7.6.x-cpu-ml-scala2.12"
             num_workers: 1
             node_type: "Standard_DS3_v2"
-            allow_reuse: true
+            allow_reuse: false
             runconfig: "../pipeline/run_config.yaml"
+            # parameters:
+            #     NUM_ITERATIONS_2:
+            #         source: PipelineParam1
+            #     NUM_ITERATIONS_1: 1
+            
